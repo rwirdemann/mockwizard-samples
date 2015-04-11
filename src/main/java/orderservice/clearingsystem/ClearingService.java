@@ -1,6 +1,6 @@
 package orderservice.clearingsystem;
 
-import org.mockwizard.examples.orderservice.Order;
+import orderservice.Order;
 
 public class ClearingService {
 

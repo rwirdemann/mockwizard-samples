@@ -4,7 +4,6 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.apache.commons.lang.StringUtils;
-import org.mockwizard.examples.orderservice.Order;
 
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -22,7 +21,7 @@ public class OrderServiceClient {
         client.resource(baseUri).path("orders").delete();
     }
 
-    public String create(org.mockwizard.examples.orderservice.Order o) {
+    public String create(Order o) {
         WebResource resource = client.resource(baseUri).path("orders");
         ClientResponse response = resource.type(MediaType.APPLICATION_JSON_TYPE).entity(o).post(ClientResponse.class);
         if (response.getLocation() != null) {
@@ -32,9 +31,9 @@ public class OrderServiceClient {
         return null;
     }
 
-    public org.mockwizard.examples.orderservice.Order get(String orderId) {
+    public Order get(String orderId) {
         WebResource resource = client.resource(baseUri).path("orders").path(orderId);
-        return resource.get(org.mockwizard.examples.orderservice.Order.class);
+        return resource.get(Order.class);
     }
 
     public List<Order> all() {

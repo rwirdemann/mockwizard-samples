@@ -9,9 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.mockwizard.Mockwizard;
-import org.mockwizard.examples.sampleservice.SampleObject;
-import org.mockwizard.examples.sampleservice.SampleServiceApplication;
-import org.mockwizard.examples.sampleservice.SampleServiceConfiguration;
 
 import java.io.File;
 
@@ -20,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class SampleServiceTest {
 
     @ClassRule
-    public static final DropwizardAppRule<org.mockwizard.examples.sampleservice.SampleServiceConfiguration> RULE =
+    public static final DropwizardAppRule<SampleServiceConfiguration> RULE =
             new DropwizardAppRule<SampleServiceConfiguration>(SampleServiceApplication.class, resourceFilePath("sample-service-config.yml"));
 
     private SampleClient sampleClient = new SampleClient(RULE.getLocalPort());

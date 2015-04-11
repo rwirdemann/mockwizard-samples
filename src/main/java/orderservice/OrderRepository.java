@@ -1,7 +1,5 @@
 package orderservice;
 
-import org.mockwizard.examples.orderservice.Order;
-
 import java.util.*;
 
 public class OrderRepository {

@@ -1,9 +1,7 @@
 package orderservice;
 
-import org.mockwizard.examples.orderservice.Order;
-import org.mockwizard.examples.orderservice.OrderRepository;
-import org.mockwizard.examples.orderservice.clearingsystem.ClearingService;
-import org.mockwizard.examples.orderservice.quoteservice.QuoteService;
+import orderservice.clearingsystem.ClearingService;
+import orderservice.quoteservice.QuoteService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -16,7 +14,7 @@ public class OrderResource {
     @Context
     private UriInfo uriInfo;
 
-    private org.mockwizard.examples.orderservice.OrderRepository orderRepository;
+    private OrderRepository orderRepository;
     private final QuoteService quoteService;
     private final ClearingService clearingService;
 

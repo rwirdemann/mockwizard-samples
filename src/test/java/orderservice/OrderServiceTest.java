@@ -2,15 +2,14 @@ package orderservice;
 
 import com.google.common.io.Resources;
 import io.dropwizard.testing.junit.DropwizardAppRule;
+import orderservice.application.OrderServiceApplication;
+import orderservice.application.OrderServiceConfiguration;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.mockwizard.Mockwizard;
-import org.mockwizard.examples.VerificationException;
-import org.mockwizard.examples.orderservice.Order;
-import org.mockwizard.examples.orderservice.application.OrderServiceApplication;
-import org.mockwizard.examples.orderservice.application.OrderServiceConfiguration;
+import org.mockwizard.VerificationException;
 
 import java.io.File;
 import java.util.List;
@@ -43,10 +42,10 @@ public class OrderServiceTest {
         Mockwizard.when("quoteservice.getPrice").with("TSLA").thenReturn(199.0);
 
         // WHEN: Order created
-        String orderId = orderServiceClient.create(new org.mockwizard.examples.orderservice.Order("TSLA", 5).withLimit(200.0));
+        String orderId = orderServiceClient.create(new Order("TSLA", 5).withLimit(200.0));
 
         // THEN: The order was bought for the quote of TSLA
-        org.mockwizard.examples.orderservice.Order o = orderServiceClient.get(orderId);
+        Order o = orderServiceClient.get(orderId);
         assertEquals(199.0, o.getPrice(), 0.000001);
     }
 
@@ -56,10 +55,10 @@ public class OrderServiceTest {
         Mockwizard.when("quoteservice.getPrice").with("TSLA").thenReturn(210.0);
 
         // WHEN: Order requested
-        orderServiceClient.create(new org.mockwizard.examples.orderservice.Order("TSLA", 5).withLimit(200.0));
+        orderServiceClient.create(new Order("TSLA", 5).withLimit(200.0));
 
         // THEN: Order was denied
-        List<org.mockwizard.examples.orderservice.Order> orders = orderServiceClient.all();
+        List<Order> orders = orderServiceClient.all();
         assertTrue(orders.isEmpty());
     }
 

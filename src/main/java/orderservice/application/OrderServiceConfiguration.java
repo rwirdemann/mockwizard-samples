@@ -2,9 +2,9 @@ package orderservice.application;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
+import orderservice.clearingsystem.ClearingService;
+import orderservice.quoteservice.QuoteService;
 import org.mockwizard.CollaboratorFactory;
-import org.mockwizard.examples.orderservice.clearingsystem.ClearingService;
-import org.mockwizard.examples.orderservice.quoteservice.QuoteService;
 
 public class OrderServiceConfiguration extends Configuration {
 
