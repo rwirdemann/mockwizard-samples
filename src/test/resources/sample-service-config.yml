@@ -1,0 +1,14 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 9060
+
+  adminConnectors:
+    - type: http
+      port: 9061
+      
+gateway:
+      type: MOCK
+      
+logging:
+      level: warn
